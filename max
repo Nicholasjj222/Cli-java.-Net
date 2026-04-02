@@ -1,0 +1,10 @@
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+      transitions: false
+    }
+  }
+})
+#brought down to an understanding point 
