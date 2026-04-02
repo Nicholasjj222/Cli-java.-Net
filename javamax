@@ -1,0 +1,25 @@
+<script setup>
+const sessions = ref([])
+const avg = ref(0)
+
+const fetchData = async () => {
+  sessions.value = await $fetch('http://localhost:8080/api/sessions')
+  avg.value = await $fetch('http://localhost:8080/api/sessions/avg')
+}
+
+onMounted(fetchData)
+</script>
+
+<template>
+  <div>
+    <h1>DevFocus Tracker</h1>
+
+    <h2>Average Focus: {{ avg }} mins</h2>
+
+    <ul>
+      <li v-for="s in sessions" :key="s.id">
+        {{ s.activity }} - {{ s.durationMinutes }} mins
+      </li>
+    </ul>
+  </div>
+</template>
